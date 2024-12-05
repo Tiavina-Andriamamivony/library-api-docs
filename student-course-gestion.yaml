@@ -1,9 +1,66 @@
 openapi: 3.0.3
 info:
-  title: Title
-  description: Title
+  title:
   version: 1.0.0
+  description: >
+    API for managing student course.
+    Provide CRUD operation , filtering options, and idempotent endpoints.
+  contact:
+    name: API Support
+    email: support@example.com
+
 servers:
-  - url: 'https'
+  - url: https://api.student_course.com/v1
+    description: Production server
+  - url: https://sanbox.student_course.com/v1
+    description: Sandbox server
 paths:
   
+
+
+components:
+  schemas:
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the group
+        groupYear:
+          type: integer
+          description: Year of creation of the group
+        promotion:
+          type: string
+          description: Promotion group of the group
+          enum: [G,H,J,K]
+        studentNb:
+          type: integer
+          description: Total number of the students in the group
+        students:
+          type: array
+          description: The list of students in the group
+
+    Student:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the student
+        Name:
+          type: string
+          description: The name of the student
+        Sex:
+          type: string
+          description: The sex of the student
+          enum: [M,F]
+        birthdate:
+          type: integer
+          description: The birthdate of the student
+        reference:
+          type: string
+          description: The school identifier of the student
+        group:
+          type: string
+          description: The group of the student
+
+
